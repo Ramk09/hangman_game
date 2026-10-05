@@ -1,0 +1,373 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #667eea,
+            #764ba2
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+.container {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    text-align: center;
+}
+
+
+header {
+
+    color: white;
+
+    margin-bottom: 20px;
+}
+
+
+header h1 {
+
+    font-size: 42px;
+
+    margin-bottom: 8px;
+}
+
+
+header p {
+
+    font-size: 17px;
+
+    opacity: 0.9;
+}
+
+
+.game-card {
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+/* Difficulty */
+
+.difficulty-form {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    flex-wrap: wrap;
+}
+
+
+.difficulty-form label {
+
+    font-weight: bold;
+}
+
+
+select {
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    border: 1px solid #ccc;
+
+    font-size: 15px;
+}
+
+
+button {
+
+    background: #667eea;
+
+    color: white;
+
+    border: none;
+
+    padding: 11px 20px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+
+button:hover {
+
+    transform: translateY(-2px);
+
+    opacity: 0.9;
+}
+
+
+/* Hangman */
+
+.hangman-section {
+
+    margin: 15px 0;
+}
+
+
+.hangman {
+
+    font-family: monospace;
+
+    font-size: 20px;
+
+    line-height: 1.2;
+
+    min-height: 150px;
+}
+
+
+/* Lives */
+
+.lives {
+
+    font-size: 20px;
+
+    margin: 15px;
+}
+
+
+.lives strong {
+
+    font-size: 24px;
+}
+
+
+/* Word */
+
+.word {
+
+    font-size: 38px;
+
+    font-weight: bold;
+
+    letter-spacing: 10px;
+
+    margin: 25px 0;
+}
+
+
+/* Message */
+
+.message {
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    margin: 15px 0;
+
+    font-weight: bold;
+}
+
+
+.message.success {
+
+    background: #d4edda;
+
+    color: #155724;
+}
+
+
+.message.error {
+
+    background: #f8d7da;
+
+    color: #721c24;
+}
+
+
+.message.info {
+
+    background: #d1ecf1;
+
+    color: #0c5460;
+}
+
+
+/* Guess */
+
+.guess-form {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin: 20px 0;
+}
+
+
+.guess-form input {
+
+    width: 220px;
+
+    padding: 12px;
+
+    border: 2px solid #ddd;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    text-align: center;
+}
+
+
+.guess-form input:focus {
+
+    outline: none;
+
+    border-color: #667eea;
+}
+
+
+/* Used letters */
+
+.used-letters {
+
+    margin-top: 25px;
+}
+
+
+.used-letters h3 {
+
+    margin-bottom: 10px;
+}
+
+
+.letter {
+
+    display: inline-block;
+
+    background: #667eea;
+
+    color: white;
+
+    padding: 7px 10px;
+
+    margin: 3px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+}
+
+
+/* Result */
+
+.result {
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #ddd;
+}
+
+
+.result h2 {
+
+    margin-bottom: 15px;
+}
+
+
+.restart-button {
+
+    background: #28a745;
+}
+
+
+/* Footer */
+
+footer {
+
+    color: white;
+
+    margin-top: 20px;
+
+    font-size: 14px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    header h1 {
+
+        font-size: 32px;
+    }
+
+    .game-card {
+
+        padding: 20px;
+    }
+
+    .word {
+
+        font-size: 28px;
+
+        letter-spacing: 6px;
+    }
+
+    .guess-form {
+
+        flex-direction: column;
+    }
+
+    .guess-form input {
+
+        width: 100%;
+    }
+
+    .guess-form button {
+
+        width: 100%;
+    }
+
+}

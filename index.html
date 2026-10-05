@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Hangman Game</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+
+        <header>
+
+            <h1>🎮 Hangman Game</h1>
+
+            <p>Guess the hidden word before you run out of lives!</p>
+
+        </header>
+
+
+        <!-- GAME CARD -->
+
+        <main class="game-card">
+
+
+            <!-- DIFFICULTY -->
+
+            <form method="POST" class="difficulty-form">
+
+                <input type="hidden"
+                       name="action"
+                       value="new_game">
+
+                <label for="difficulty">
+                    Difficulty:
+                </label>
+
+                <select name="difficulty"
+                        id="difficulty">
+
+                    <option value="easy"
+                        {% if difficulty == "easy" %}
+                        selected
+                        {% endif %}>
+                        Easy
+                    </option>
+
+                    <option value="medium"
+                        {% if difficulty == "medium" %}
+                        selected
+                        {% endif %}>
+                        Medium
+                    </option>
+
+                    <option value="hard"
+                        {% if difficulty == "hard" %}
+                        selected
+                        {% endif %}>
+                        Hard
+                    </option>
+
+                </select>
+
+                <button type="submit">
+                    New Game
+                </button>
+
+            </form>
+
+
+            <!-- HANGMAN -->
+
+            <div class="hangman-section">
+
+                <pre class="hangman">
+{{ stage }}
+                </pre>
+
+            </div>
+
+
+            <!-- LIVES -->
+
+            <div class="lives">
+
+                <span>❤️ Lives:</span>
+
+                <strong>{{ lives }}</strong>
+
+            </div>
+
+
+            <!-- WORD -->
+
+            <div class="word">
+
+                {{ displayed_word }}
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            {% if message %}
+
+            <div class="message {{ message_type }}">
+
+                {{ message }}
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- GUESS FORM -->
+
+            {% if not game_over %}
+
+            <form method="POST"
+                  class="guess-form">
+
+                <input type="hidden"
+                       name="action"
+                       value="guess">
+
+                <input
+                    type="text"
+                    name="letter"
+                    maxlength="1"
+                    placeholder="Enter a letter"
+                    autocomplete="off"
+                    autofocus
+                >
+
+                <button type="submit">
+                    Guess
+                </button>
+
+            </form>
+
+            {% endif %}
+
+
+            <!-- USED LETTERS -->
+
+            <div class="used-letters">
+
+                <h3>Used Letters</h3>
+
+                {% if guessed_letters %}
+
+                    {% for letter in guessed_letters %}
+
+                        <span class="letter">
+                            {{ letter.upper() }}
+                        </span>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <p>No letters guessed yet.</p>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- GAME RESULT -->
+
+            {% if game_over %}
+
+            <div class="result">
+
+                {% if won %}
+
+                    <h2>🏆 You Won!</h2>
+
+                {% else %}
+
+                    <h2>💀 You Lost!</h2>
+
+                {% endif %}
+
+                <form method="POST">
+
+                    <input type="hidden"
+                           name="action"
+                           value="new_game">
+
+                    <input type="hidden"
+                           name="difficulty"
+                           value="{{ difficulty }}">
+
+                    <button type="submit"
+                            class="restart-button">
+
+                        🔄 Play Again
+
+                    </button>
+
+                </form>
+
+            </div>
+
+            {% endif %}
+
+
+        </main>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <p>
+                Built with Python 🐍 + Flask 🌐
+            </p>
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
